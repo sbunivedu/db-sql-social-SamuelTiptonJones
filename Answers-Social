@@ -1,0 +1,15 @@
+1. SELECT h1.name
+FROM Highschooler h1, Highschooler h2, Friend f
+WHERE h2.name = "Gabriel" AND h2.ID = f.ID2 AND h1.ID = f.ID1;
+
+2. SELECT h.name, h.grade
+FROM Highschooler h
+WHERE (h.ID NOT IN (SELECT ID1 FROM Likes)) AND (h.ID NOT IN (SELECT ID2 FROM Likes));
+
+3. SELECT Highschooler.name 
+FROM Highschooler natural join Likes  
+WHERE Highschooler.ID = Likes.ID2
+
+4. SELECT H1.name, H1.grade, H2.name, H2.grade 
+FROM Highschooler H1, Highschooler H2, Likes L
+WHERE H1.ID = L.ID1 AND H2.ID = L.ID2 AND (H1.grade - H2.grade) >= 2;
